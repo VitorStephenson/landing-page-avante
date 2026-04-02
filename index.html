@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avante Consultoria – Soluções Jurídicas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────── */
+    :root {
+      --green-900: #0d1f16;
+      --green-800: #122a1d;
+      --green-700: #1a3d28;
+      --green-600: #245235;
+      --green-400: #3a7a50;
+      --green-200: #a8c9b4;
+      --gold-400:  #c9a94d;
+      --gold-300:  #d9be7a;
+      --gold-200:  #e8d5a3;
+      --gold-100:  #f5edd8;
+      --cream:     #faf7f0;
+      --white:     #ffffff;
+      --text-dark: #0d1f16;
+      --text-mid:  #3a5244;
+      --text-light:#6b8c78;
+      --radius-sm: 4px;
+      --radius-md: 10px;
+      --radius-lg: 20px;
+      --shadow-gold: 0 4px 24px rgba(201,169,77,0.18);
+      --shadow-deep: 0 20px 60px rgba(13,31,22,0.35);
+      --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ─── RESET ──────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── TYPOGRAPHY ─────────────────────────────── */
+    .display {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+    }
+    .serif { font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── UTILITY ────────────────────────────────── */
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+    .text-gold  { color: var(--gold-400); }
+    .text-green { color: var(--green-700); }
+    .section-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      border: 1px solid rgba(201,169,77,0.35);
+      border-radius: 40px;
+      padding: 5px 18px;
+      margin-bottom: 18px;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      padding: 16px 32px;
+      cursor: pointer;
+      border: none;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold-400) 0%, #b8943a 100%);
+      color: var(--green-900);
+      box-shadow: 0 4px 20px rgba(201,169,77,0.30);
+    }
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,169,77,0.45);
+      background: linear-gradient(135deg, var(--gold-300) 0%, var(--gold-400) 100%);
+    }
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--gold-400);
+      border: 1.5px solid var(--gold-400);
+    }
+    .btn-outline-gold:hover {
+      background: rgba(201,169,77,0.08);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-gold);
+    }
+    .btn-outline-light {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(250,247,240,0.45);
+    }
+    .btn-outline-light:hover {
+      background: rgba(250,247,240,0.08);
+      border-color: var(--cream);
+      transform: translateY(-2px);
+    }
+    .btn-green {
+      background: var(--green-700);
+      color: var(--cream);
+    }
+    .btn-green:hover {
+      background: var(--green-600);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26,61,40,0.4);
+    }
+    .btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* ─── DIVIDER ─────────────────────────────────── */
+    .divider-gold {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-400), transparent);
+      margin: 20px 0 28px;
+    }
+    .divider-center {
+      margin: 20px auto 28px;
+      background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+    }
+
+    /* ═══════════════════════════════════════════════
+       HEADER / NAV
+    ═══════════════════════════════════════════════ */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 900;
+      transition: var(--transition);
+      padding: 0;
+    }
+    header.scrolled {
+      background: rgba(13,31,22,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 140px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: 40px;
+    }
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      background: rgba(13,31,22,0.96);
+      border-radius: calc(var(--radius-lg) + 4px);
+      box-shadow: 0 14px 35px rgba(0,0,0,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    header .logo-mark {
+      width: 200px;
+      height: 100px;
+    }
+    .logo-mark svg,
+    .logo-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .logo-sub {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+      margin-top: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(250,247,240,0.75);
+      transition: var(--transition);
+    }
+    .nav-links a:hover { color: var(--gold-300); }
+    .nav-cta {
+      display: flex;
+      gap: 12px;
+      margin-left: 40px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh;
+      background: var(--green-900);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg-texture {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(36,82,53,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(201,169,77,0.06) 0%, transparent 60%);
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,77,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,77,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-ornament {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,77,0.08);
+      pointer-events: none;
+    }
+    .hero-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,77,0.06);
+    }
+    .hero-ornament::after {
+      content: '';
+      position: absolute;
+      inset: 100px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,169,77,0.04);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      padding-top: 100px;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-eyebrow-line {
+      width: 36px;
+      height: 1px;
+      background: var(--gold-400);
+    }
+    .hero-eyebrow-text {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-400);
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(44px, 6vw, 72px);
+      font-weight: 600;
+      line-height: 1.08;
+      color: var(--cream);
+      margin-bottom: 24px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-400);
+    }
+    .hero-subtitle {
+      font-size: clamp(16px, 2vw, 19px);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(250,247,240,0.72);
+      margin-bottom: 18px;
+      max-width: 580px;
+      animation: fadeUp 0.8s 0.25s ease both;
+    }
+    .hero-support {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gold-300);
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      margin-bottom: 44px;
+      animation: fadeUp 0.8s 0.35s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.45s ease both;
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(250,247,240,0.35);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      animation: fadeIn 1s 1s ease both;
+    }
+    .scroll-arrow {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(180deg, rgba(250,247,240,0.35), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════════ */
+    #como-funciona {
+      background: var(--cream);
+      padding: 110px 0;
+    }
+    .section-header { text-align: center; margin-bottom: 72px; }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 600;
+      color: var(--green-900);
+      line-height: 1.15;
+    }
+    .section-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text-mid);
+      max-width: 580px;
+      margin: 16px auto 0;
+      line-height: 1.7;
+    }
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .flow-grid::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: calc(12.5% + 24px);
+      right: calc(12.5% + 24px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+    }
+    .flow-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+    }
+    .flow-num {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--green-900);
+      border: 2px solid var(--gold-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+      transition: var(--transition);
+    }
+    .flow-step:hover .flow-num {
+      background: var(--gold-400);
+      transform: scale(1.05);
+    }
+    .flow-num-digit {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--gold-400);
+      transition: var(--transition);
+    }
+    .flow-step:hover .flow-num-digit { color: var(--green-900); }
+    .flow-icon { font-size: 28px; }
+    .flow-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--green-900);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+    .flow-desc {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SPLIT SECTIONS (CLIENTE / ADVOGADO)
+    ═══════════════════════════════════════════════ */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 680px;
+    }
+    .split-panel {
+      padding: 100px 72px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .split-panel.dark {
+      background: var(--green-900);
+    }
+    .split-panel.light {
+      background: var(--green-800);
+    }
+    .split-panel.cream {
+      background: var(--cream);
+    }
+    .split-panel.gold-light {
+      background: var(--gold-100);
+    }
+    .split-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(30px, 3.5vw, 46px);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .split-title.light-text { color: var(--cream); }
+    .split-title.dark-text  { color: var(--green-900); }
+    .split-text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .split-text.light-text { color: rgba(250,247,240,0.72); }
+    .split-text.dark-text  { color: var(--text-mid); }
+    .benefits-list {
+      list-style: none;
+      margin-bottom: 44px;
+    }
+    .benefits-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(201,169,77,0.12);
+      font-size: 15px;
+      font-weight: 400;
+    }
+    .benefits-list.light-text li { color: rgba(250,247,240,0.82); }
+    .benefits-list.dark-text li  { color: var(--text-mid); }
+    .benefit-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(201,169,77,0.15);
+      border: 1px solid var(--gold-400);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .benefit-icon svg {
+      width: 11px;
+      height: 11px;
+      stroke: var(--gold-400);
+    }
+
+    /* Decorative side image areas */
+    .split-visual {
+      background: var(--green-700);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .split-visual-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .split-visual-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px;
+    }
+    .visual-icon-large {
+      font-size: 72px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .visual-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--cream);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HOW TO AFFILIATE (ADVOGADO STEPS)
+    ═══════════════════════════════════════════════ */
+    #como-afiliar {
+      background: var(--green-900);
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #como-afiliar::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,169,77,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,169,77,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .affiliate-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .affiliate-card {
+      background: rgba(250,247,240,0.04);
+      border: 1px solid rgba(201,169,77,0.15);
+      border-radius: var(--radius-md);
+      padding: 40px 36px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .affiliate-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,169,77,0.04) 0%, transparent 60%);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .affiliate-card:hover {
+      border-color: rgba(201,169,77,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    }
+    .affiliate-card:hover::before { opacity: 1; }
+    .affiliate-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: rgba(201,169,77,0.2);
+      line-height: 1;
+      flex-shrink: 0;
+      width: 56px;
+    }
+    .affiliate-step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .affiliate-step-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(250,247,240,0.6);
+      line-height: 1.7;
+    }
+
+    /* ═══════════════════════════════════════════════
+       DIFFERENTIATOR
+    ═══════════════════════════════════════════════ */
+    #diferencial {
+      background: linear-gradient(135deg, var(--gold-400) 0%, #b8943a 100%);
+      padding: 110px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #diferencial::before {
+      content: '';
+      position: absolute;
+      right: -100px;
+      top: -100px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      border: 1px solid rgba(13,31,22,0.1);
+    }
+    #diferencial::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      top: -60px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      border: 1px solid rgba(13,31,22,0.07);
+    }
+    .diferencial-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .diferencial-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 600;
+      color: var(--green-900);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .diferencial-text {
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(13,31,22,0.78);
+      line-height: 1.75;
+    }
+    .diferencial-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pill {
+      background: rgba(13,31,22,0.12);
+      border: 1px solid rgba(13,31,22,0.2);
+      border-radius: 40px;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--green-900);
+      letter-spacing: 0.04em;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════════════════ */
+    #prova {
+      background: var(--cream);
+      padding: 110px 0;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 60px;
+    }
+    .testimonial-card {
+      background: var(--white);
+      border: 1px solid rgba(201,169,77,0.15);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      border-color: rgba(201,169,77,0.4);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-3px);
+    }
+    .testimonial-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      color: var(--gold-300);
+      line-height: 0.6;
+      margin-bottom: 16px;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-mid);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-700), var(--green-400));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--gold-400);
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--green-900);
+    }
+    .author-role {
+      font-size: 12px;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+    .stars {
+      color: var(--gold-400);
+      font-size: 14px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    /* Placeholder card */
+    .testimonial-placeholder {
+      border: 2px dashed rgba(201,169,77,0.2);
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: var(--text-light);
+      font-style: italic;
+      font-size: 14px;
+      text-align: center;
+      gap: 10px;
+    }
+    .testimonial-placeholder svg {
+      width: 28px;
+      height: 28px;
+      stroke: rgba(201,169,77,0.3);
+    }
+
+    /* ═══════════════════════════════════════════════
+       FINAL CTA
+    ═══════════════════════════════════════════════ */
+    #cta-final {
+      background: var(--green-900);
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(36,82,53,0.4) 0%, transparent 70%);
+    }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 600;
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-title em {
+      color: var(--gold-400);
+      font-style: italic;
+    }
+    .cta-sub {
+      font-size: 17px;
+      font-weight: 300;
+      color: rgba(250,247,240,0.6);
+      margin-bottom: 52px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-btns {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: #080f0b;
+      padding: 52px 0;
+      border-top: 1px solid rgba(201,169,77,0.1);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-copy {
+      font-size: 13px;
+      color: rgba(250,247,240,0.35);
+    }
+    .footer-copy span { color: var(--gold-400); }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: rgba(250,247,240,0.4);
+      letter-spacing: 0.08em;
+      transition: var(--transition);
+    }
+    .footer-links a:hover { color: var(--gold-300); }
+
+    /* ═══════════════════════════════════════════════
+       WHATSAPP FLOAT
+    ═══════════════════════════════════════════════ */
+    .wa-float {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(37,211,102,0.55);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: white; }
+    .wa-pulse {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(37,211,102,0.25);
+      animation: waPulse 2s infinite;
+    }
+
+    /* ═══════════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════════ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 0.35; transform: scaleY(1); }
+      50%      { opacity: 0.7;  transform: scaleY(0.7); }
+    }
+    @keyframes waPulse {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .flow-grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .flow-grid::before { display: none; }
+      .split-section { grid-template-columns: 1fr; }
+      .split-visual { display: none; }
+      .split-panel { padding: 72px 36px; }
+      .affiliate-grid { grid-template-columns: 1fr; }
+      .diferencial-inner { grid-template-columns: 1fr; gap: 40px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .nav-cta .btn-outline-light { display: none; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      header .logo-mark {
+        width: 96px;
+        height: 96px;
+      }
+      .nav-inner {
+        padding: 0 32px;
+        min-height: 120px;
+      }
+      .logo-name {
+        font-size: 20px;
+      }
+      .logo-sub {
+        font-size: 9px;
+      }
+    }
+    @media (max-width: 600px) {
+      .flow-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .hero-btns .btn { width: 100%; justify-content: center; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; max-width: 360px; justify-content: center; }
+      .split-panel { padding: 60px 24px; }
+      .container { padding: 0 20px; }
+      header .logo-mark {
+        width: 80px;
+        height: 80px;
+      }
+      .nav-inner {
+        padding: 0 16px;
+        min-height: 96px;
+      }
+      .logo-wrap {
+        gap: 10px;
+      }
+      .logo-name {
+        font-size: 18px;
+      }
+      .logo-sub {
+        font-size: 9px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════
+     GLOBAL CONFIG — change the number here
+     ════════════════════════════════════════════════ -->
+<script>
+  const WHATSAPP_NUMBER = "5511999999599"; // ← Altere apenas este número
+
+  function waLink(msg) {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+
+  const MSG_CLIENTE  = "Olá! Preciso de ajuda para resolver um problema jurídico. Gostaria de entender como a Avante pode me auxiliar.";
+  const MSG_GERAL    = "Olá! Gostaria de saber mais sobre os serviços da Avante Consultoria.";
+</script>
+
+<!-- ══════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════ -->
+<header id="main-header">
+  <div class="nav-inner">
+    <!-- LOGO -->
+    <div class="logo-wrap">
+        <div class="logo-mark">
+        <img src="logo.png" alt="Avante Consultoria" />
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#como-funciona">Como Funciona</a></li>
+      <li><a href="#clientes">Para Clientes</a></li>
+      <li><a href="#prova">Depoimentos</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a class="btn btn-gold" style="padding:12px 22px; font-size:12px;" onclick="this.href=waLink(MSG_CLIENTE)" href="#">Preciso de Ajuda</a>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg-texture"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-ornament"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Conexão Jurídica Inteligente</span>
+      </div>
+
+      <h1 class="hero-title">
+        Soluções jurídicas<br/>
+        <em>sem complicação</em>
+      </h1>
+
+      <p class="hero-subtitle">
+        Se você precisa resolver um problema jurídico, a Avante faz a conexão ideal.
+      </p>
+
+      <p class="hero-support">
+        "Analisamos, organizamos e direcionamos cada caso para o advogado certo."
+      </p>
+
+      <div class="hero-btns">
+        <a class="btn btn-outline-gold" href="#" onclick="this.href=waLink(MSG_CLIENTE)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+          Preciso resolver meu caso
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     COMO FUNCIONA
+════════════════════════════════════════════════ -->
+<section id="como-funciona">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-badge">Processo</span>
+      <h2 class="section-title">Como a Avante funciona</h2>
+      <div class="divider-gold divider-center"></div>
+      <p class="section-subtitle">Um fluxo simples, eficiente e organizado — do primeiro contato à atuação do advogado.</p>
+    </div>
+
+    <div class="flow-grid">
+      <div class="flow-step reveal reveal-delay-1">
+        <div class="flow-num"><span class="flow-num-digit">01</span></div>
+        <h3 class="flow-label">O cliente entra em contato</h3>
+        <p class="flow-desc">Atendimento inicial simplificado, sem burocracia. O cliente descreve sua situação.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-2">
+        <div class="flow-num"><span class="flow-num-digit">02</span></div>
+        <h3 class="flow-label">A Avante analisa e organiza</h3>
+        <p class="flow-desc">Nossa equipe analisa o caso, organiza documentos e prepara um dossiê completo.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-3">
+        <div class="flow-num"><span class="flow-num-digit">03</span></div>
+        <h3 class="flow-label">Direcionamento qualificado</h3>
+        <p class="flow-desc">O caso é encaminhado ao advogado especialista na área correta.</p>
+      </div>
+      <div class="flow-step reveal reveal-delay-4">
+        <div class="flow-num"><span class="flow-num-digit">04</span></div>
+        <h3 class="flow-label">Advogado pronto para atuar</h3>
+        <p class="flow-desc">O advogado recebe tudo organizado e parte direto para a solução.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     ÁREA DO CLIENTE
+════════════════════════════════════════════════ -->
+<section id="clientes" class="split-section">
+  <!-- PANEL -->
+  <div class="split-panel dark reveal">
+    <span class="section-badge">Para Cidadãos</span>
+    <h2 class="split-title light-text">Precisa de ajuda <em style="color:var(--gold-400);font-style:italic;">jurídica?</em></h2>
+    <div class="divider-gold"></div>
+    <p class="split-text light-text">
+      Se você tem um problema jurídico, nós facilitamos todo o processo para você — do primeiro contato até o advogado certo para seu caso.
+    </p>
+    <ul class="benefits-list light-text">
+      <li>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 4.5,9 10,3"/></svg>
+        </div>
+        Atendimento inicial simplificado
+      </li>
+      <li>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 4.5,9 10,3"/></svg>
+        </div>
+        Análise detalhada do seu caso
+      </li>
+      <li>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 4.5,9 10,3"/></svg>
+        </div>
+        Organização completa dos documentos
+      </li>
+      <li>
+        <div class="benefit-icon">
+          <svg viewBox="0 0 12 12" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,6 4.5,9 10,3"/></svg>
+        </div>
+        Encaminhamento ao advogado preparado
+      </li>
+    </ul>
+    <a class="btn btn-gold" href="#" onclick="this.href=waLink(MSG_CLIENTE)" style="align-self:flex-start;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      Quero resolver meu problema
+    </a>
+  </div>
+
+  <!-- VISUAL -->
+  <div class="split-visual">
+    <div class="split-visual-bg" style="background: linear-gradient(135deg, var(--green-700) 0%, var(--green-600) 100%);"></div>
+    <div style="position:absolute;inset:0;background-image:radial-gradient(ellipse 80% 80% at 50% 50%, rgba(201,169,77,0.08) 0%, transparent 70%);"></div>
+    <div class="split-visual-content">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" style="width:140px;height:140px;margin:0 auto 24px;">
+        <circle cx="60" cy="60" r="55" fill="none" stroke="rgba(201,169,77,0.15)" stroke-width="1"/>
+        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(201,169,77,0.1)" stroke-width="1"/>
+        <path d="M40 75 Q60 35 80 75" fill="none" stroke="var(--gold-400)" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="60" cy="42" r="12" fill="none" stroke="rgba(250,247,240,0.3)" stroke-width="1.5"/>
+        <circle cx="60" cy="42" r="6" fill="rgba(201,169,77,0.4)"/>
+        <line x1="60" y1="54" x2="60" y2="68" stroke="rgba(250,247,240,0.2)" stroke-width="1" stroke-dasharray="3,3"/>
+      </svg>
+      <p class="visual-label">Seu caso em boas mãos</p>
+      <p style="font-size:13px;color:rgba(250,247,240,0.4);margin-top:12px;font-weight:300;">Sem burocracia. Sem complicação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     DIFERENCIAL
+════════════════════════════════════════════════ -->
+<section id="diferencial">
+  <div class="container">
+    <div class="diferencial-inner">
+      <div class="reveal">
+        <span class="section-badge" style="border-color:rgba(13,31,22,0.3);color:var(--green-900);">Diferencial</span>
+        <h2 class="diferencial-title">Você foca na solução.<br/><em style="font-style:italic;">Nós cuidamos<br/>da estrutura.</em></h2>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="diferencial-text" style="margin-bottom:36px;">
+          A Avante elimina o trabalho operacional tanto para o cliente quanto para o advogado, criando uma conexão eficiente, organizada e profissional. Cada caso chega ao destino certo, no momento certo, com tudo preparado.
+        </p>
+        <div class="diferencial-pills">
+          <span class="pill">Eficiência</span>
+          <span class="pill">Organização</span>
+          <span class="pill">Triagem Qualificada</span>
+          <span class="pill">Escalabilidade</span>
+          <span class="pill">Conexão Inteligente</span>
+          <span class="pill">Menos Burocracia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     PROVA / DEPOIMENTOS
+════════════════════════════════════════════════ -->
+<section id="prova">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-badge">Resultados</span>
+      <h2 class="section-title">Quem já usa a Avante</h2>
+      <div class="divider-gold divider-center"></div>
+      <p class="section-subtitle">
+        Advogados já estão aumentando sua produtividade e clientes estão resolvendo seus problemas com mais rapidez.
+      </p>
+    </div>
+
+    <div class="testimonials-grid">
+      <!-- Depoimento 1 -->
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          Minha produtividade aumentou significativamente. Recebi o dossiê do cliente já organizado e pude focar direto na estratégia do caso.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DR</div>
+          <div>
+            <div class="author-name">Dr. Rafael Mendonça</div>
+            <div class="author-role">Advogado Trabalhista • São Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Depoimento 2 -->
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-quote">"</div>
+        <p class="testimonial-text">
+          Não sabia por onde começar com meu problema jurídico. A Avante simplificou tudo — me senti amparada desde o primeiro contato.
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AC</div>
+          <div>
+            <div class="author-name">Ana Claudia Ferreira</div>
+            <div class="author-role">Cliente • Belo Horizonte</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="testimonial-card testimonial-placeholder reveal reveal-delay-3">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a2 2 0 01-2-2v-1"/>
+          <path d="M15 3H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l4-4h4a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+        </svg>
+        <span>Espaço para mais depoimentos</span>
+        <span style="font-size:12px;opacity:0.6;">Adicione avaliações reais de clientes e advogados parceiros</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     CTA FINAL
+════════════════════════════════════════════════ -->
+<section id="cta-final">
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <span class="section-badge" style="border-color:rgba(201,169,77,0.3);">Próximo passo</span>
+    </div>
+    <h2 class="cta-title reveal">
+      Pronto para dar o<br/>
+      <em>próximo passo?</em>
+    </h2>
+    <p class="cta-sub reveal">Seja você advogado ou cliente — a Avante está pronta para te atender.</p>
+
+    <div class="cta-btns reveal">
+      <a class="btn btn-outline-gold" href="#" onclick="this.href=waLink(MSG_CLIENTE)" style="font-size:15px;padding:18px 36px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+        </svg>
+        Preciso de ajuda jurídica
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="logo-wrap">
+        <div class="logo-mark">
+          <img src="logo(2).png?v=2" alt="Avante Consultoria" />
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 <span>Avante Consultoria</span>. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de Uso</a>
+        <a href="#" onclick="this.href=waLink(MSG_GERAL)">Contato</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════
+     WHATSAPP FLOAT
+════════════════════════════════════════════════ -->
+<a class="wa-float" href="#" onclick="this.href=waLink(MSG_GERAL)" title="Fale conosco no WhatsApp" target="_blank">
+  <div class="wa-pulse"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════════════ -->
+<script>
+  // Sticky header
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
