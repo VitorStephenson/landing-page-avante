@@ -285,8 +285,41 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 700px;
+      max-width: 1000px;
       padding-top: 100px;
+    }
+    .hero-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .hero-heading .hero-title {
+      margin-bottom: 0;
+      max-width: 560px;
+    }
+    .hero-figure {
+      flex: 1 1 320px;
+      min-width: 240px;
+      max-width: 360px;
+      align-self: center;
+    }
+    .hero-figure img {
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: var(--shadow-deep);
+      display: block;
+    }
+    @media (max-width: 860px) {
+      .hero-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-figure {
+        max-width: 100%;
+        min-width: auto;
+      }
     }
     .hero-eyebrow {
       display: flex;
@@ -1061,10 +1094,15 @@
         <span class="hero-eyebrow-text">Conexão Jurídica Inteligente</span>
       </div>
 
-      <h1 class="hero-title">
-        Soluções jurídicas<br/>
-        <em>sem complicação</em>
-      </h1>
+      <div class="hero-heading">
+        <h1 class="hero-title">
+          Soluções jurídicas<br/>
+          <em>sem complicação</em>
+        </h1>
+        <div class="hero-figure">
+          <img src="img1.png" alt="Ilustração de serviços jurídicos da Avante" />
+        </div>
+      </div>
 
       <p class="hero-subtitle">
         Se você precisa resolver um problema jurídico, a Avante faz a conexão ideal.
