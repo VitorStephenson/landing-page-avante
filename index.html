@@ -328,9 +328,14 @@
       flex-wrap: wrap;
       margin-bottom: 24px;
     }
-    .hero-top-row .hero-title {
+    .hero-top-left {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
       flex: 1 1 420px;
       max-width: 520px;
+    }
+    .hero-top-left .hero-title {
       margin-bottom: 0;
     }
     .hero-info-panel {
@@ -1131,10 +1136,15 @@
       </div>
 
       <div class="hero-top-row">
-        <h1 class="hero-title">
-          Soluções jurídicas<br/>
-          <em>sem complicação</em>
-        </h1>
+        <div class="hero-top-left">
+          <h1 class="hero-title">
+            Soluções jurídicas<br/>
+            <em>sem complicação</em>
+          </h1>
+          <p class="hero-subtitle">
+            Se você precisa resolver um problema jurídico, a Avante faz a conexão ideal.
+          </p>
+        </div>
 
         <div class="hero-info-panel">
           <div class="hero-info-card">
@@ -1151,10 +1161,6 @@
           </div>
         </div>
       </div>
-
-      <p class="hero-subtitle">
-        Se você precisa resolver um problema jurídico, a Avante faz a conexão ideal.
-      </p>
 
       <p class="hero-support">
         "Analisamos, organizamos e direcionamos cada caso para o advogado certo."
