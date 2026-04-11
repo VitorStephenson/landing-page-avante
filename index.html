@@ -320,6 +320,51 @@
       font-style: italic;
       color: var(--gold-400);
     }
+    .hero-info-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      align-items: stretch;
+      background: rgba(250,247,240,0.08);
+      border: 1px solid rgba(250,247,240,0.18);
+      border-radius: 28px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      max-width: 780px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-info-card {
+      flex: 1 1 180px;
+      min-width: 180px;
+      text-align: center;
+      padding: 14px 16px;
+    }
+    .hero-info-number {
+      display: block;
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 700;
+      color: var(--gold-400);
+      margin-bottom: 10px;
+    }
+    .hero-info-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,247,240,0.88);
+    }
+    @media (max-width: 720px) {
+      .hero-info-panel {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-info-card {
+        min-width: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
     .hero-subtitle {
       font-size: clamp(16px, 2vw, 19px);
       font-weight: 300;
@@ -1065,6 +1110,21 @@
         Soluções jurídicas<br/>
         <em>sem complicação</em>
       </h1>
+
+      <div class="hero-info-panel">
+        <div class="hero-info-card">
+          <span class="hero-info-number">+600</span>
+          <span class="hero-info-label">Clientes</span>
+        </div>
+        <div class="hero-info-card">
+          <span class="hero-info-number">6 anos</span>
+          <span class="hero-info-label">Atuação no mercado</span>
+        </div>
+        <div class="hero-info-card">
+          <span class="hero-info-number">27 estados</span>
+          <span class="hero-info-label">Cobertura nacional</span>
+        </div>
+      </div>
 
       <p class="hero-subtitle">
         Se você precisa resolver um problema jurídico, a Avante faz a conexão ideal.
