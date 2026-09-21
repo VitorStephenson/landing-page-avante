@@ -286,11 +286,15 @@
       position: relative;
       z-index: 2;
       max-width: 840px;
+      width: 100%;
+      margin: 0 auto;
       padding-top: 100px;
+      text-align: center;
     }
     .hero-eyebrow {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       margin-bottom: 28px;
       animation: fadeUp 0.8s ease both;
@@ -320,88 +324,14 @@
       font-style: italic;
       color: var(--gold-400);
     }
-    .hero-top-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .hero-top-left {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      flex: 1 1 420px;
-      max-width: 520px;
-    }
-    .hero-top-left .hero-title {
-      margin-bottom: 0;
-    }
-    .hero-info-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      justify-content: center;
-      align-items: stretch;
-      background: rgba(250,247,240,0.08);
-      border: 1px solid rgba(250,247,240,0.18);
-      border-radius: 28px;
-      padding: 18px 20px;
-      width: min(280px, 100%);
-      margin-left: 100px;
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
-    .hero-info-card {
-      flex: 1 1 auto;
-      min-width: 0;
-      text-align: left;
-      padding: 10px 0;
-    }
-    .hero-info-number {
-      display: block;
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 700;
-      color: var(--gold-400);
-      margin-bottom: 8px;
-    }
-    .hero-info-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(250,247,240,0.88);
-    }
-    @media (max-width: 860px) {
-      .hero-top-row {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero-top-row .hero-title {
-        text-align: center;
-        max-width: 100%;
-      }
-      .hero-info-panel {
-        width: 100%;
-        max-width: 520px;
-        align-items: center;
-        margin-left: 0;
-      }
-      .hero-info-card {
-        text-align: center;
-      }
-    }
-    @media (max-width: 720px) {
-      .hero-info-panel {
-        padding: 16px 16px;
-      }
-    }
     .hero-subtitle {
       font-size: clamp(16px, 2vw, 19px);
       font-weight: 300;
       line-height: 1.7;
       color: rgba(250,247,240,0.72);
       margin-bottom: 18px;
+      margin-left: auto;
+      margin-right: auto;
       max-width: 580px;
       animation: fadeUp 0.8s 0.25s ease both;
     }
@@ -417,6 +347,7 @@
     }
     .hero-btns {
       display: flex;
+      justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
       animation: fadeUp 0.8s 0.45s ease both;
@@ -1106,7 +1037,7 @@
     <!-- LOGO -->
     <div class="logo-wrap">
         <div class="logo-mark">
-        <img src="logo.png" alt="Recupera Consultoria" />
+        <img src="logoRecupera+.png" alt="Recupera Consultoria" />
       </div>
     </div>
 
@@ -1137,35 +1068,16 @@
         <span class="hero-eyebrow-text">Conexão Jurídica Inteligente</span>
       </div>
 
-      <div class="hero-top-row">
-        <div class="hero-top-left">
-          <h1 class="hero-title">
-            Soluções jurídicas<br/>
-            <em>sem complicação</em>
-          </h1>
-          <p class="hero-subtitle">
-            Se você precisa resolver um problema jurídico, a Recupera faz a conexão ideal.
-          </p>
-          <p class="hero-support">
-            "Analisamos, organizamos e direcionamos cada caso para o advogado certo."
-          </p>
-        </div>
-
-        <div class="hero-info-panel">
-          <div class="hero-info-card">
-            <span class="hero-info-number">+600</span>
-            <span class="hero-info-label">Clientes</span>
-          </div>
-          <div class="hero-info-card">
-            <span class="hero-info-number">6 anos</span>
-            <span class="hero-info-label">Atuação no mercado</span>
-          </div>
-          <div class="hero-info-card">
-            <span class="hero-info-number">27 estados</span>
-            <span class="hero-info-label">Cobertura nacional</span>
-          </div>
-        </div>
-      </div>
+      <h1 class="hero-title">
+        Soluções jurídicas<br/>
+        <em>sem complicação</em>
+      </h1>
+      <p class="hero-subtitle">
+        Se você precisa resolver um problema jurídico, a Recupera faz a conexão ideal.
+      </p>
+      <p class="hero-support">
+        "Analisamos, organizamos e direcionamos cada caso para o advogado certo."
+      </p>
 
       <div class="hero-btns">
         <a class="btn btn-outline-gold" href="#" onclick="this.href=waLink(MSG_CLIENTE)">
@@ -1415,7 +1327,7 @@
     <div class="footer-inner">
       <div class="logo-wrap">
         <div class="logo-mark">
-          <img src="logo.png?v=2" alt="Recupera Consultoria" />
+          <img src="logoRecupera+.png" alt="Recupera Consultoria" />
         </div>
       </div>
       <p class="footer-copy">© 2025 <span>Recupera Consultoria</span>. Todos os direitos reservados.</p>
